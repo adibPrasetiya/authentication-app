@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h2>Register</h2>
+    <% if (typeof errorMessage !== 'undefined' && errorMessage.length > 0) { %>
+    <div class="alert alert-danger"><%= errorMessage %></div>
+    <% } %>
+    <form action="/auth/register" method="POST">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+      <a href="/auth/login" class="btn btn-link">Login</a>
+    </form>
+  </div>
+</div>
