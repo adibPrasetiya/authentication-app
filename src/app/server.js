@@ -9,6 +9,7 @@ import { publicRoute } from "../routes/public-route.js";
 import expressEjsLayouts from "express-ejs-layouts";
 import { authMiddleware } from "../middlewares/auth-middleware.js";
 import { protectedRoute } from "../routes/protected-route.js";
+import { configureOIDC, memoryStore } from "./keycloak.js";
 
 export const app = express();
 
@@ -28,9 +29,14 @@ app.use(
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: memoryStore,
   })
 );
+
 app.use(flash());
+
+// konfigurasi OIDC
+configureOIDC();
 
 // routes
 app.use(publicRoute);
